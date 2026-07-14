@@ -123,6 +123,8 @@ const fields = [
 
 const stateFields = [...fields, "mealInput", "trainingInput"];
 let activePage = "week-plan";
+let isAdmin = sessionStorage.getItem("jianfei-admin") === "true";
+const adminPassword = "admin0330";
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -238,6 +240,7 @@ function switchPage(page) {
   const isReview = page.includes("review");
   $(".control-panel .panel-head strong").textContent = isReview ? "复盘输入" : "目标输入";
   updateDashboard();
+  applyAdminMode();
 }
 
 fields.forEach((id) => $(`#${id}`).addEventListener("input", updateDashboard));
@@ -246,6 +249,40 @@ $("#trainingInput").addEventListener("input", updateDashboard);
 
 document.querySelectorAll(".time-item").forEach((item) => {
   item.addEventListener("click", () => switchPage(item.dataset.page));
+});
+
+function applyAdminMode() {
+  document.body.classList.toggle("admin-mode", isAdmin);
+  document.body.classList.toggle("readonly-mode", !isAdmin);
+  $("#adminState").textContent = isAdmin ? "管理员可编辑" : "访客只读";
+  $("#adminToggle").textContent = isAdmin ? "退出管理" : "管理员模式";
+
+  stateFields.forEach((id) => {
+    const field = $(`#${id}`);
+    field.readOnly = !isAdmin;
+    field.setAttribute("aria-readonly", String(!isAdmin));
+  });
+}
+
+$("#adminToggle").addEventListener("click", () => {
+  if (isAdmin) {
+    isAdmin = false;
+    sessionStorage.removeItem("jianfei-admin");
+    applyAdminMode();
+    return;
+  }
+
+  const password = window.prompt("请输入管理员密码");
+  if (password === adminPassword) {
+    isAdmin = true;
+    sessionStorage.setItem("jianfei-admin", "true");
+    applyAdminMode();
+    return;
+  }
+
+  if (password !== null) {
+    window.alert("密码不正确");
+  }
 });
 
 switchPage("week-plan");

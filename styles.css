@@ -168,6 +168,33 @@ h2 { font-size: clamp(56px, 7vw, 104px); line-height: 0.9; }
 
 .status-strip span { color: var(--muted); }
 
+.admin-panel {
+  display: grid;
+  gap: 8px;
+  min-width: 150px;
+  border: 1px solid var(--line);
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.04);
+}
+
+.admin-panel span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.admin-button {
+  min-height: 34px;
+  border: 1px solid var(--white);
+  background: var(--white);
+  color: #000;
+  font-weight: 800;
+}
+
+.admin-mode .admin-button {
+  background: transparent;
+  color: var(--white);
+}
+
 .mission-panel,
 .control-panel,
 .metrics article,
@@ -279,6 +306,28 @@ textarea {
   color: var(--white);
   padding: 11px 12px;
   outline: none;
+}
+
+input[readonly],
+textarea[readonly] {
+  color: #bdbdc3;
+  border-style: dashed;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.035) 0,
+      rgba(255,255,255,0.035) 6px,
+      transparent 6px,
+      transparent 12px
+    ),
+    #050505;
+  cursor: not-allowed;
+}
+
+input[readonly]:focus,
+textarea[readonly]:focus {
+  border-color: var(--line);
+  box-shadow: none;
 }
 
 textarea {
