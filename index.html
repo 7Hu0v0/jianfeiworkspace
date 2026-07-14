@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>减肥计划工作台 Demo</title>
     <meta name="description" content="黑白科技感的减肥计划规划与复盘工作台 demo。" />
-    <link rel="stylesheet" href="./styles.css?v=admin-mode" />
+    <link rel="stylesheet" href="./styles.css?v=daily-log" />
   </head>
   <body>
     <main class="shell">
@@ -21,13 +21,25 @@
         <nav class="time-nav" aria-label="时间页面">
           <div class="nav-title">
             <span>▾</span>
-            <strong>规划与复盘</strong>
-            <b>6</b>
+            <strong>日录入与周期复盘</strong>
+            <b>9</b>
           </div>
 
           <section class="time-group">
+            <div class="group-head"><span>▾</span><strong>日录入</strong><em>3</em></div>
+            <button class="time-item active" type="button" data-page="daily-log" data-date="2026-07-15">今天 · 7.15</button>
+            <button class="time-item" type="button" data-page="daily-log" data-date="2026-07-14">昨天 · 7.14</button>
+            <button class="time-item" type="button" data-page="daily-log" data-date="2026-07-13">周一 · 7.13</button>
+            <div class="quick-row">
+              <button type="button">+ 今天</button>
+              <button type="button">+ 昨天</button>
+              <button type="button">+ 明天</button>
+            </div>
+          </section>
+
+          <section class="time-group">
             <div class="group-head"><span>▾</span><strong>周周期</strong><em>2</em></div>
-            <button class="time-item active" type="button" data-page="week-plan">2026.7.13-7.17 · 周规划</button>
+            <button class="time-item" type="button" data-page="week-plan">2026.7.13-7.17 · 周规划</button>
             <button class="time-item" type="button" data-page="week-review">2026.7.13-7.17 · 周复盘</button>
             <div class="quick-row">
               <button type="button">+ 本周</button>
@@ -63,12 +75,12 @@
       <section class="workspace">
         <header class="topbar">
           <div>
-            <p class="eyebrow" id="pageKicker">WEEK PLAN</p>
-            <h1 id="pageTitle">2026.7.13-7.17 周规划</h1>
+            <p class="eyebrow" id="pageKicker">DAILY LOG</p>
+            <h1 id="pageTitle">2026.7.15 日录入</h1>
           </div>
           <div class="status-strip">
             <span>第 18 天</span>
-            <strong id="pageStatus">本周推进中</strong>
+            <strong id="pageStatus">记录今天</strong>
           </div>
           <div class="admin-panel" aria-label="编辑权限">
             <span id="adminState">访客只读</span>
@@ -82,14 +94,14 @@
               <p class="eyebrow">FAT LOSS RADAR</p>
               <h2><span id="lostWeight">1.8</span> kg</h2>
               <p>
-                本周期已减重 <strong id="lostWeightText">1.8 kg</strong>，
+                当前周期已减重 <strong id="lostWeightText">1.8 kg</strong>，
                 当前完成 <strong id="progressText">60%</strong>。继续保持热量缺口。
               </p>
             </div>
             <div class="orbital-meter" aria-label="周期减脂进度">
               <div class="meter-core">
                 <span id="progressValue">60%</span>
-                <small id="meterLabel">周目标</small>
+                <small id="meterLabel">今日记录</small>
               </div>
             </div>
           </article>
@@ -97,16 +109,18 @@
           <article class="control-panel">
             <div class="panel-head">
               <div>
-                <p class="eyebrow">DIRECT INPUT</p>
-                <strong>目标输入</strong>
+                <p class="eyebrow">DAILY INPUT</p>
+                <strong>日录入</strong>
               </div>
-              <span class="chip" id="periodChip">周规划</span>
+              <span class="chip" id="periodChip">今天</span>
             </div>
             <div class="input-grid">
+              <label>记录日期<input id="dateInput" type="date" value="2026-07-15" /></label>
               <label>热量配额 kcal / 日<input id="calorieBudget" type="number" min="900" value="1680" /></label>
+              <label>今日摄入 kcal<input id="actualCalories" type="number" min="0" value="1560" /></label>
               <label>运动消耗目标 kcal / 日<input id="burnTarget" type="number" min="0" value="420" /></label>
-              <label>本周一体重 kg<input id="startWeightInput" type="number" min="30" step="0.1" value="84.2" /></label>
-              <label>当前体重 kg<input id="currentWeightInput" type="number" min="30" step="0.1" value="82.4" /></label>
+              <label>周期起始体重 kg<input id="startWeightInput" type="number" min="30" step="0.1" value="84.2" /></label>
+              <label>今日体重 kg<input id="currentWeightInput" type="number" min="30" step="0.1" value="82.4" /></label>
             </div>
           </article>
         </section>
@@ -155,8 +169,8 @@
           <article class="habit-card">
             <div class="panel-head">
               <div>
-                <p class="eyebrow">DAILY SIGNALS</p>
-                <strong>日常输入</strong>
+                <p class="eyebrow">BODY SIGNALS</p>
+                <strong>身体信号</strong>
               </div>
             </div>
             <div class="input-grid compact">
@@ -173,7 +187,7 @@
             <div class="panel-head">
               <div>
                 <p class="eyebrow">MEAL INPUT</p>
-                <strong>饮食记录</strong>
+                <strong>今日饮食</strong>
               </div>
               <span class="chip">自动估算蛋白质</span>
             </div>
@@ -188,7 +202,7 @@
             <div class="panel-head">
               <div>
                 <p class="eyebrow">TRAINING INPUT</p>
-                <strong>训练记录</strong>
+                <strong>今日训练</strong>
               </div>
               <span class="chip" id="trainingChip">45 / 60 min</span>
             </div>
@@ -208,6 +222,6 @@
       </section>
     </main>
 
-    <script src="./app.js?v=admin-mode"></script>
+    <script src="./app.js?v=daily-log"></script>
   </body>
 </html>

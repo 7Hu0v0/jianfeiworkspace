@@ -1,15 +1,37 @@
-const pageMeta = {
-  "week-plan": ["WEEK PLAN", "2026.7.13-7.17 周规划", "本周推进中", "周规划", 3],
-  "week-review": ["WEEK REVIEW", "2026.7.13-7.17 周复盘", "复盘本周表现", "周复盘", 3],
-  "month-plan": ["MONTH PLAN", "2026.7 月规划", "拆解月度目标", "月规划", 6],
-  "month-review": ["MONTH REVIEW", "2026.7 月复盘", "复盘月度趋势", "月复盘", 6],
-  "half-plan": ["HALF YEAR PLAN", "2026 H2 半年规划", "长期目标编排", "半年规划", 12],
-  "half-review": ["HALF YEAR REVIEW", "2026 H2 半年复盘", "观察长期变化", "半年复盘", 12],
-};
-
-const pageState = {
-  "week-plan": {
+const dailyLogs = {
+  "2026-07-13": {
     calorieBudget: 1680,
+    actualCalories: 1620,
+    burnTarget: 420,
+    startWeightInput: 84.2,
+    currentWeightInput: 83.2,
+    stepsInput: 9800,
+    sleepInput: 7.1,
+    stepsTarget: 10000,
+    sleepTarget: 7.5,
+    trainingMinutes: 50,
+    trainingTarget: 60,
+    mealInput: "早餐：鸡蛋2个，希腊酸奶200g\n午餐：鸡胸肉160g，米饭120g，青菜\n晚餐：牛肉120g，豆腐，沙拉\n加餐：乳清蛋白一勺",
+    trainingInput: "力量 A：深蹲 4x8，推举 4x8，划船 4x10\n有氧：坡度走 18 分钟",
+  },
+  "2026-07-14": {
+    calorieBudget: 1680,
+    actualCalories: 1740,
+    burnTarget: 420,
+    startWeightInput: 84.2,
+    currentWeightInput: 82.8,
+    stepsInput: 11240,
+    sleepInput: 6.8,
+    stepsTarget: 10000,
+    sleepTarget: 7.5,
+    trainingMinutes: 35,
+    trainingTarget: 60,
+    mealInput: "早餐：鸡蛋2个，酸奶250g\n午餐：三文鱼150g，米饭150g，西兰花\n晚餐：鸡胸肉120g，玉米，沙拉",
+    trainingInput: "有氧：Zone 2 35 分钟\n拉伸：髋部 8 分钟",
+  },
+  "2026-07-15": {
+    calorieBudget: 1680,
+    actualCalories: 1560,
     burnTarget: 420,
     startWeightInput: 84.2,
     currentWeightInput: 82.4,
@@ -22,75 +44,56 @@ const pageState = {
     mealInput: "早餐：鸡蛋2个，希腊酸奶200g\n午餐：鸡胸肉180g，米饭150g，西兰花\n晚餐：三文鱼150g，沙拉，玉米\n加餐：乳清蛋白一勺，杏仁20g",
     trainingInput: "力量 A：深蹲 4x8，推举 4x8，划船 4x10\n有氧：Zone 2 坡度走 20 分钟\n拉伸：肩颈与髋部 8 分钟",
   },
+};
+
+const periodGoals = {
+  "week-plan": {
+    kicker: "WEEK PLAN",
+    title: "2026.7.13-7.17 周规划",
+    status: "由每日记录推进",
+    chip: "周规划",
+    targetLoss: 3,
+    dateRange: ["2026-07-13", "2026-07-15"],
+  },
   "week-review": {
-    calorieBudget: 1700,
-    burnTarget: 390,
-    startWeightInput: 84.2,
-    currentWeightInput: 82.7,
-    stepsInput: 9240,
-    sleepInput: 6.9,
-    stepsTarget: 10000,
-    sleepTarget: 7.5,
-    trainingMinutes: 218,
-    trainingTarget: 300,
-    mealInput: "本周高蛋白日：鸡胸肉4次，鸡蛋10个，酸奶5杯\n波动日：火锅一次，夜宵一次\n加餐：乳清蛋白3勺",
-    trainingInput: "本周完成：力量 3 次，有氧 2 次\n漏掉：周四核心训练\n下周调整：把有氧放到午饭后",
+    kicker: "WEEK REVIEW",
+    title: "2026.7.13-7.17 周复盘",
+    status: "复盘本周表现",
+    chip: "周复盘",
+    targetLoss: 3,
+    dateRange: ["2026-07-13", "2026-07-15"],
   },
   "month-plan": {
-    calorieBudget: 1750,
-    burnTarget: 360,
-    startWeightInput: 84.2,
-    currentWeightInput: 82.4,
-    stepsInput: 10200,
-    sleepInput: 7.2,
-    stepsTarget: 9500,
-    sleepTarget: 7.3,
-    trainingMinutes: 5,
-    trainingTarget: 20,
-    mealInput: "月度饮食原则：鸡胸肉、鱼、鸡蛋、酸奶轮换\n每周一次自由餐，乳清蛋白训练日补充",
-    trainingInput: "月目标：力量 12 次，有氧 8 次\n重点：深蹲、硬拉、卧推逐步加重量",
+    kicker: "MONTH PLAN",
+    title: "2026.7 月规划",
+    status: "按日累计月目标",
+    chip: "月规划",
+    targetLoss: 6,
+    dateRange: ["2026-07-01", "2026-07-31"],
   },
   "month-review": {
-    calorieBudget: 1760,
-    burnTarget: 330,
-    startWeightInput: 86.1,
-    currentWeightInput: 82.4,
-    stepsInput: 9800,
-    sleepInput: 7.0,
-    stepsTarget: 9500,
-    sleepTarget: 7.3,
-    trainingMinutes: 16,
-    trainingTarget: 20,
-    mealInput: "本月主要蛋白来源：鸡蛋、鸡胸肉、三文鱼、牛肉、希腊酸奶\n问题：周末碳水偏高",
-    trainingInput: "本月复盘：力量 10 次，有氧 6 次\n瓶颈：下肢恢复慢，睡眠不足时训练质量下降",
+    kicker: "MONTH REVIEW",
+    title: "2026.7 月复盘",
+    status: "复盘月度趋势",
+    chip: "月复盘",
+    targetLoss: 6,
+    dateRange: ["2026-07-01", "2026-07-31"],
   },
   "half-plan": {
-    calorieBudget: 1850,
-    burnTarget: 300,
-    startWeightInput: 88.8,
-    currentWeightInput: 82.4,
-    stepsInput: 10000,
-    sleepInput: 7.5,
-    stepsTarget: 9000,
-    sleepTarget: 7.5,
-    trainingMinutes: 18,
-    trainingTarget: 96,
-    mealInput: "半年策略：每餐保证蛋白质\n常备：鸡胸肉、牛肉、鱼、鸡蛋、酸奶、豆腐、乳清蛋白",
-    trainingInput: "半年训练：力量为主，有氧辅助\n阶段一减脂，阶段二维持，阶段三塑形",
+    kicker: "HALF YEAR PLAN",
+    title: "2026 H2 半年规划",
+    status: "长期目标编排",
+    chip: "半年规划",
+    targetLoss: 12,
+    dateRange: ["2026-07-01", "2026-12-31"],
   },
   "half-review": {
-    calorieBudget: 1860,
-    burnTarget: 280,
-    startWeightInput: 88.8,
-    currentWeightInput: 82.4,
-    stepsInput: 9400,
-    sleepInput: 7.1,
-    stepsTarget: 9000,
-    sleepTarget: 7.5,
-    trainingMinutes: 42,
-    trainingTarget: 96,
-    mealInput: "半年复盘记录：鸡胸肉、鸡蛋、酸奶执行稳定\n需要改善：外食估算不准，周末蛋白质不足",
-    trainingInput: "半年训练复盘：力量习惯已建立\n下一阶段：增加背部容量和核心稳定",
+    kicker: "HALF YEAR REVIEW",
+    title: "2026 H2 半年复盘",
+    status: "观察长期变化",
+    chip: "半年复盘",
+    targetLoss: 12,
+    dateRange: ["2026-07-01", "2026-12-31"],
   },
 };
 
@@ -108,8 +111,9 @@ const proteinRules = [
   ["米饭", 2.6, "g/100g"],
 ];
 
-const fields = [
+const numericFields = [
   "calorieBudget",
+  "actualCalories",
   "burnTarget",
   "startWeightInput",
   "currentWeightInput",
@@ -120,9 +124,10 @@ const fields = [
   "trainingMinutes",
   "trainingTarget",
 ];
-
-const stateFields = [...fields, "mealInput", "trainingInput"];
-let activePage = "week-plan";
+const stateFields = ["dateInput", ...numericFields, "mealInput", "trainingInput"];
+const editableFields = stateFields;
+let activePage = "daily-log";
+let activeDate = "2026-07-15";
 let isAdmin = sessionStorage.getItem("jianfei-admin") === "true";
 const adminPassword = "admin0330";
 
@@ -130,6 +135,31 @@ const $ = (selector) => document.querySelector(selector);
 
 function numberValue(id) {
   return Number($(`#${id}`).value) || 0;
+}
+
+function dateLabel(date) {
+  const [, month, day] = date.split("-");
+  return `${Number(month)}.${Number(day)}`;
+}
+
+function blankLog(date) {
+  const latest = dailyLogs[activeDate] || dailyLogs["2026-07-15"];
+  return {
+    ...latest,
+    actualCalories: 0,
+    currentWeightInput: latest.currentWeightInput,
+    stepsInput: 0,
+    sleepInput: 0,
+    trainingMinutes: 0,
+    mealInput: "",
+    trainingInput: "",
+    dateInput: date,
+  };
+}
+
+function getDailyLog(date) {
+  if (!dailyLogs[date]) dailyLogs[date] = blankLog(date);
+  return dailyLogs[date];
 }
 
 function estimateProtein(text) {
@@ -154,12 +184,77 @@ function estimateProtein(text) {
   return { total: Math.round(total), hits };
 }
 
+function datesBetween(start, end) {
+  return Object.keys(dailyLogs)
+    .filter((date) => date >= start && date <= end)
+    .sort();
+}
+
+function average(values) {
+  if (!values.length) return 0;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
+function aggregatePeriod(page) {
+  const goal = periodGoals[page];
+  const dates = datesBetween(goal.dateRange[0], goal.dateRange[1]);
+  const logs = dates.map((date) => dailyLogs[date]);
+  const first = logs[0] || getDailyLog(activeDate);
+  const last = logs[logs.length - 1] || first;
+  const mealInput = dates.map((date) => `${dateLabel(date)}\n${dailyLogs[date].mealInput}`).join("\n\n");
+  const trainingInput = dates.map((date) => `${dateLabel(date)}\n${dailyLogs[date].trainingInput}`).join("\n\n");
+
+  return {
+    dateInput: activeDate,
+    calorieBudget: Math.round(average(logs.map((log) => Number(log.calorieBudget)))),
+    actualCalories: Math.round(average(logs.map((log) => Number(log.actualCalories)))),
+    burnTarget: Math.round(average(logs.map((log) => Number(log.burnTarget)))),
+    startWeightInput: first.startWeightInput,
+    currentWeightInput: last.currentWeightInput,
+    stepsInput: Math.round(average(logs.map((log) => Number(log.stepsInput)))),
+    sleepInput: Number(average(logs.map((log) => Number(log.sleepInput))).toFixed(1)),
+    stepsTarget: Math.round(average(logs.map((log) => Number(log.stepsTarget)))),
+    sleepTarget: Number(average(logs.map((log) => Number(log.sleepTarget))).toFixed(1)),
+    trainingMinutes: logs.reduce((sum, log) => sum + Number(log.trainingMinutes), 0),
+    trainingTarget: logs.reduce((sum, log) => sum + Number(log.trainingTarget), 0),
+    mealInput,
+    trainingInput,
+    days: logs.length,
+  };
+}
+
+function saveDailyForm() {
+  if (activePage !== "daily-log") return;
+  const previousDate = activeDate;
+  const nextDate = $("#dateInput").value || activeDate;
+  const log = getDailyLog(nextDate);
+  numericFields.forEach((id) => {
+    log[id] = $(`#${id}`).value;
+  });
+  log.mealInput = $("#mealInput").value;
+  log.trainingInput = $("#trainingInput").value;
+  activeDate = nextDate;
+  if (previousDate !== nextDate) setPageHeader("daily-log", nextDate);
+}
+
+function fillForm(data) {
+  $("#dateInput").value = data.dateInput || activeDate;
+  numericFields.forEach((id) => {
+    $(`#${id}`).value = data[id] ?? 0;
+  });
+  $("#mealInput").value = data.mealInput || "";
+  $("#trainingInput").value = data.trainingInput || "";
+}
+
 function setWidth(selector, value) {
   $(selector).style.width = `${Math.max(0, Math.min(value, 100))}%`;
 }
 
 function updateDashboard() {
+  if (activePage === "daily-log") saveDailyForm();
+
   const budget = numberValue("calorieBudget");
+  const actual = numberValue("actualCalories");
   const burn = numberValue("burnTarget");
   const startWeight = numberValue("startWeightInput");
   const currentWeight = numberValue("currentWeightInput");
@@ -169,22 +264,20 @@ function updateDashboard() {
   const sleepGoal = Math.max(numberValue("sleepTarget"), 1);
   const training = numberValue("trainingMinutes");
   const trainingGoal = Math.max(numberValue("trainingTarget"), 1);
-
-  const meta = pageMeta[document.body.dataset.page || "week-plan"];
-  const targetLoss = meta[4];
+  const targetLoss = activePage === "daily-log" ? 3 : periodGoals[activePage].targetLoss;
   const lost = Math.max(startWeight - currentWeight, 0);
   const progress = Math.round((lost / targetLoss) * 100);
-  const deficit = 2000 + burn - budget;
+  const deficit = budget + burn - actual;
   const protein = estimateProtein($("#mealInput").value);
   const stepsRate = Math.round((steps / stepsGoal) * 100);
   const sleepRate = Math.round((sleep / sleepGoal) * 100);
   const trainingRate = Math.round((training / trainingGoal) * 100);
   const score = Math.round(
-    Math.min(progress, 100) * 0.42 +
-      Math.min(Math.max(deficit / 8, 0), 100) * 0.2 +
-      Math.min(stepsRate, 100) * 0.18 +
-      Math.min(sleepRate, 100) * 0.1 +
-      Math.min(trainingRate, 100) * 0.1
+    Math.min(progress, 100) * 0.35 +
+      Math.min(Math.max(deficit / 8, 0), 100) * 0.25 +
+      Math.min(stepsRate, 100) * 0.17 +
+      Math.min(sleepRate, 100) * 0.11 +
+      Math.min(trainingRate, 100) * 0.12
   );
 
   $("#lostWeight").textContent = lost.toFixed(1);
@@ -199,7 +292,7 @@ function updateDashboard() {
   $("#sleepValue").textContent = `${sleep.toFixed(1)}h`;
   $("#sleepHint").textContent = `目标 ${sleepGoal}h · ${Math.min(sleepRate, 100)}%`;
   $("#burnScore").textContent = score;
-  $("#targetLossLabel").textContent = `目标 ${targetLoss.toFixed(1)}kg`;
+  $("#targetLossLabel").textContent = activePage === "daily-log" ? "周目标 3.0kg" : `目标 ${targetLoss.toFixed(1)}kg`;
   $("#trainingChip").textContent = `${training} / ${trainingGoal} min`;
   $("#coachNote").textContent =
     trainingRate >= 100
@@ -215,40 +308,55 @@ function updateDashboard() {
   $(".orbital-meter").style.background = `conic-gradient(from 220deg, var(--white) 0 ${Math.min(progress, 100)}%, rgba(255,255,255,0.08) ${Math.min(progress, 100)}% 100%)`;
 }
 
-function switchPage(page) {
-  stateFields.forEach((id) => {
-    pageState[activePage][id] = $(`#${id}`).value;
-  });
+function setPageHeader(page, date = activeDate) {
+  if (page === "daily-log") {
+    $("#pageKicker").textContent = "DAILY LOG";
+    $("#pageTitle").textContent = `${dateLabel(date)} 日录入`;
+    $("#pageStatus").textContent = "记录今天";
+    $("#periodChip").textContent = "日录入";
+    $("#meterLabel").textContent = "今日记录";
+    $(".control-panel .panel-head strong").textContent = "日录入";
+    return;
+  }
+
+  const goal = periodGoals[page];
+  $("#pageKicker").textContent = goal.kicker;
+  $("#pageTitle").textContent = goal.title;
+  $("#pageStatus").textContent = goal.status;
+  $("#periodChip").textContent = goal.chip;
+  $("#meterLabel").textContent = goal.chip;
+  $(".control-panel .panel-head strong").textContent = page.includes("review") ? "汇总复盘" : "周期目标";
+}
+
+function switchPage(page, date = activeDate) {
+  if (activePage === "daily-log") saveDailyForm();
 
   activePage = page;
-  stateFields.forEach((id) => {
-    $(`#${id}`).value = pageState[page][id];
-  });
-
-  const meta = pageMeta[page];
+  activeDate = date;
   document.body.dataset.page = page;
-  $("#pageKicker").textContent = meta[0];
-  $("#pageTitle").textContent = meta[1];
-  $("#pageStatus").textContent = meta[2];
-  $("#periodChip").textContent = meta[3];
-  $("#meterLabel").textContent = meta[3];
+  setPageHeader(page, date);
+
+  if (page === "daily-log") {
+    const log = getDailyLog(date);
+    fillForm({ ...log, dateInput: date });
+  } else {
+    fillForm(aggregatePeriod(page));
+  }
 
   document.querySelectorAll(".time-item").forEach((item) => {
-    item.classList.toggle("active", item.dataset.page === page);
+    const isDaily = item.dataset.page === "daily-log" && item.dataset.date === activeDate;
+    const isPeriod = page !== "daily-log" && item.dataset.page === page;
+    item.classList.toggle("active", isDaily || isPeriod);
   });
 
-  const isReview = page.includes("review");
-  $(".control-panel .panel-head strong").textContent = isReview ? "复盘输入" : "目标输入";
   updateDashboard();
   applyAdminMode();
 }
 
-fields.forEach((id) => $(`#${id}`).addEventListener("input", updateDashboard));
-$("#mealInput").addEventListener("input", updateDashboard);
-$("#trainingInput").addEventListener("input", updateDashboard);
+stateFields.forEach((id) => $(`#${id}`).addEventListener("input", updateDashboard));
 
 document.querySelectorAll(".time-item").forEach((item) => {
-  item.addEventListener("click", () => switchPage(item.dataset.page));
+  item.addEventListener("click", () => switchPage(item.dataset.page, item.dataset.date || activeDate));
 });
 
 function applyAdminMode() {
@@ -257,10 +365,11 @@ function applyAdminMode() {
   $("#adminState").textContent = isAdmin ? "管理员可编辑" : "访客只读";
   $("#adminToggle").textContent = isAdmin ? "退出管理" : "管理员模式";
 
-  stateFields.forEach((id) => {
+  editableFields.forEach((id) => {
     const field = $(`#${id}`);
-    field.readOnly = !isAdmin;
-    field.setAttribute("aria-readonly", String(!isAdmin));
+    const isReadonly = !isAdmin || activePage !== "daily-log";
+    field.readOnly = isReadonly;
+    field.setAttribute("aria-readonly", String(isReadonly));
   });
 }
 
@@ -285,4 +394,4 @@ $("#adminToggle").addEventListener("click", () => {
   }
 });
 
-switchPage("week-plan");
+switchPage("daily-log", activeDate);
