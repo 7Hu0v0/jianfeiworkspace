@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>减肥计划工作台 Demo</title>
+    <meta name="description" content="黑白科技感的减肥计划规划与复盘工作台 demo。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="rail" aria-label="规划与复盘侧边栏">
+        <div class="side-profile">
+          <span class="avatar">JH</span>
+          <div>
+            <strong>Jefferson</strong>
+            <small>减脂计划 · 个人工作台</small>
+          </div>
+        </div>
+
+        <nav class="time-nav" aria-label="时间页面">
+          <div class="nav-title">
+            <span>▾</span>
+            <strong>规划与复盘</strong>
+            <b>6</b>
+          </div>
+
+          <section class="time-group">
+            <div class="group-head"><span>▾</span><strong>周周期</strong><em>2</em></div>
+            <button class="time-item active" type="button" data-page="week-plan">2026.7.13-7.17 · 周规划</button>
+            <button class="time-item" type="button" data-page="week-review">2026.7.13-7.17 · 周复盘</button>
+            <div class="quick-row">
+              <button type="button">+ 本周</button>
+              <button type="button">+ 下周</button>
+              <button type="button">+ 上周</button>
+            </div>
+          </section>
+
+          <section class="time-group">
+            <div class="group-head"><span>▾</span><strong>月周期</strong><em>2</em></div>
+            <button class="time-item" type="button" data-page="month-plan">2026.7 · 月规划</button>
+            <button class="time-item" type="button" data-page="month-review">2026.7 · 月复盘</button>
+            <div class="quick-row">
+              <button type="button">+ 本月</button>
+              <button type="button">+ 下月</button>
+              <button type="button">+ 上月</button>
+            </div>
+          </section>
+
+          <section class="time-group">
+            <div class="group-head"><span>▾</span><strong>半年周期</strong><em>2</em></div>
+            <button class="time-item" type="button" data-page="half-plan">2026 H2 · 半年规划</button>
+            <button class="time-item" type="button" data-page="half-review">2026 H2 · 半年复盘</button>
+            <div class="quick-row">
+              <button type="button">+ 本半年</button>
+              <button type="button">+ 下半年</button>
+              <button type="button">+ 上半年</button>
+            </div>
+          </section>
+        </nav>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="pageKicker">WEEK PLAN</p>
+            <h1 id="pageTitle">2026.7.13-7.17 周规划</h1>
+          </div>
+          <div class="status-strip">
+            <span>第 18 天</span>
+            <strong id="pageStatus">本周推进中</strong>
+          </div>
+        </header>
+
+        <section class="page-layout">
+          <article class="mission-panel">
+            <div class="mission-copy">
+              <p class="eyebrow">FAT LOSS RADAR</p>
+              <h2><span id="lostWeight">1.8</span> kg</h2>
+              <p>
+                本周期已减重 <strong id="lostWeightText">1.8 kg</strong>，
+                当前完成 <strong id="progressText">60%</strong>。继续保持热量缺口。
+              </p>
+            </div>
+            <div class="orbital-meter" aria-label="周期减脂进度">
+              <div class="meter-core">
+                <span id="progressValue">60%</span>
+                <small id="meterLabel">周目标</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="control-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">DIRECT INPUT</p>
+                <strong>目标输入</strong>
+              </div>
+              <span class="chip" id="periodChip">周规划</span>
+            </div>
+            <div class="input-grid">
+              <label>热量配额 kcal / 日<input id="calorieBudget" type="number" min="900" value="1680" /></label>
+              <label>运动消耗目标 kcal / 日<input id="burnTarget" type="number" min="0" value="420" /></label>
+              <label>本周一体重 kg<input id="startWeightInput" type="number" min="30" step="0.1" value="84.2" /></label>
+              <label>当前体重 kg<input id="currentWeightInput" type="number" min="30" step="0.1" value="82.4" /></label>
+            </div>
+          </article>
+        </section>
+
+        <section class="metrics">
+          <article>
+            <span>热量缺口</span>
+            <strong id="deficitValue">740</strong>
+            <small>kcal / day</small>
+          </article>
+          <article>
+            <span>蛋白质估算</span>
+            <strong id="proteinValue">94g</strong>
+            <small id="proteinHint">来自饮食文本</small>
+          </article>
+          <article>
+            <span>步数</span>
+            <strong id="stepsValue">10840</strong>
+            <small id="stepsHint">目标 10000</small>
+          </article>
+          <article>
+            <span>睡眠</span>
+            <strong id="sleepValue">7.4h</strong>
+            <small id="sleepHint">目标 7.5h</small>
+          </article>
+        </section>
+
+        <section class="progress-lab">
+          <article class="progress-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">MISSION TRACK</p>
+                <strong>进度推进器</strong>
+              </div>
+              <span class="chip" id="targetLossLabel">目标 3.0kg</span>
+            </div>
+            <div class="rail-progress">
+              <span id="progressBar"></span>
+            </div>
+            <div class="progress-readout">
+              <b id="burnScore">74</b>
+              <p id="burnScoreText">综合推进分，来自体重变化、热量缺口、步数和睡眠。</p>
+            </div>
+          </article>
+
+          <article class="habit-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">DAILY SIGNALS</p>
+                <strong>日常输入</strong>
+              </div>
+            </div>
+            <div class="input-grid compact">
+              <label>今日步数<input id="stepsInput" type="number" min="0" value="10840" /></label>
+              <label>昨晚睡眠 h<input id="sleepInput" type="number" min="0" max="14" step="0.1" value="7.4" /></label>
+              <label>步数目标<input id="stepsTarget" type="number" min="0" value="10000" /></label>
+              <label>睡眠目标 h<input id="sleepTarget" type="number" min="0" max="14" step="0.1" value="7.5" /></label>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="plan-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">MEAL INPUT</p>
+                <strong>饮食记录</strong>
+              </div>
+              <span class="chip">自动估算蛋白质</span>
+            </div>
+            <textarea id="mealInput" rows="7">早餐：鸡蛋2个，希腊酸奶200g
+午餐：鸡胸肉180g，米饭150g，西兰花
+晚餐：三文鱼150g，沙拉，玉米
+加餐：乳清蛋白一勺，杏仁20g</textarea>
+            <div class="estimate-list" id="proteinBreakdown"></div>
+          </article>
+
+          <article class="training-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">TRAINING INPUT</p>
+                <strong>训练记录</strong>
+              </div>
+              <span class="chip" id="trainingChip">45 / 60 min</span>
+            </div>
+            <div class="input-grid compact">
+              <label>训练分钟<input id="trainingMinutes" type="number" min="0" value="45" /></label>
+              <label>目标分钟<input id="trainingTarget" type="number" min="0" value="60" /></label>
+            </div>
+            <textarea id="trainingInput" rows="6">力量 A：深蹲 4x8，推举 4x8，划船 4x10
+有氧：Zone 2 坡度走 20 分钟
+拉伸：肩颈与髋部 8 分钟</textarea>
+            <div class="training-score">
+              <span id="trainingBar"></span>
+            </div>
+            <p class="coach-note" id="coachNote">今天训练密度不错，建议补充 10 分钟低强度收尾。</p>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
