@@ -6,7 +6,7 @@
 
 启用 GitHub Pages 后，项目可以通过以下地址访问：
 
-https://7hu0v0.github.io/jianfeiworkspace/
+https://7hu0v0.github.io/jianfeiworkspace/index.html
 
 如果页面暂时 404，请在仓库 `Settings -> Pages` 中选择：
 
